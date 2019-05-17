@@ -1,0 +1,142 @@
+---
+title: "<div id=\"brand\">h|1i|0g|3h|2c|1h|2a|1r|3t|2e|1r|2{userchile}</div>"
+author: "<div id=\"subbrand\">Joshua Kunst, Julio 2017</div>"
+output:
+  revealjs::revealjs_presentation:
+    self_contained: false
+    mathjax: null
+    transition: fade
+    css: ["css/styles.css"]
+    incremental: true
+    center: false
+    theme: simple
+    fig_width: 5
+    fig_height: 4
+    reveal_options:
+      slideNumber: true
+      controls: false
+      mouseWheel: false
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r, include = FALSE}
+source(here::here("slides/R/setup.R"))
+```
+
+## `r ico("exclamation-triangle", "#ff0033")` Advertencia 
+
+<script>
+(function (H) {
+    H.wrap(H.Pointer.prototype, 'normalize', function (proceed, e) {
+        var e = proceed.call(this,e);
+        var zoom = Reveal.getScale();
+        if(zoom>1) {
+        var positionX = e.pageX - e.chartX;
+        var positionY = e.pageY - e.chartY;
+        e.chartX = Math.round((e.pageX - positionX*zoom)/zoom);
+        e.chartY = Math.round((e.pageY - positionY*zoom)/zoom); 
+        } else {
+          e.chartX = Math.round(e.chartX/zoom);
+          e.chartY = Math.round(e.chartY/zoom);
+        }
+      return e;
+    });
+}(Highcharts));
+</script>
+
+
+<br>
+
+Todos los gráficos de `r ico("pie-chart")`, _3D_ y la combinación de estos 
+en esta presentación son ilustrativos y no representan el 
+estilo ni el gusto de quien lo presenta
+
+
+# `r ico("info-circle", "#FFCC00")` Quien soy y que haré(mos) { .center .white data-background="https://i.giphy.com/3o7GVDAkLp4cEMbzwc.gif" }
+
+## Quien soy
+
+- De día hago como que trabajo en riesgo (70%)
+- En Proyectos Personales (30%)
+- Me gusta escribir código (en `r R()`)
+- Y compartirlo en [jkunst.com](http://jkunst.com)
+- De casualidad soy Estadístico <span class="fragment">. Así mismo use`r R()`</span>
+
+## Que haremos
+
+- Revisar formas de visualizar en `r R()`
+- Qué es __highcharts__?
+- Cómo usar __highcharter__?
+- Función genérica `hchart`
+- Ejemplos simples<span class="fragment">, y quizás algunos más complejos</span><span class="fragment">. Integración con `shiny`<span class="fragment">, `rmarkdown`</span><span class="fragment">. Si el tiempo da</span>
+
+## Por que lo haríamos?
+
+- La __visualización__ ayuda a descubrir y explicar
+- En muchos casos resume un _gran_ desarrollo que hemos hecho
+- Y bueno, en general es mejor recibido si es claro y __atractivo__
+
+<span class="fragment">![](img/joewink.gif)</span>
+
+# `r ico("history")` Historia { .right .white data-background="img/oldpc.gif"}
+
+## R base
+
+Haciendo visualizaciones desde 2000 AC
+
+```{r}
+y <- rpois(100, lambda = 3)
+plot(table(y))
+```
+
+## R base
+
+Rápido para hacer cosas simples, pero no escala de la mejor manera.
+
+```{r}
+plot(AirPassengers)
+```
+
+## ggplot2 & Lattice
+
+- `lattice` basado en _trellis_
+- `ggplot2` basado en _gramar of graphics_
+- Paquetes con buen soporte en datos multivariados (colores, facets, ...)
+- `ggplot2` es el rey de los gráficos estáticos
+- Muy flexible dado que existe la posibilidad de crear extensiones + temas
+
+## htmlwidgets
+
+- Surgió como la 2da iteración de `rCharts` para graficar usando 
+librerías de javascript (basadas en web).
+- Permite a usuarios ~~ab~~usar de estás librerías sin necesariamente conocer js
+- Provee un _framework_ -una estandarización- para que un desarrollador
+porte una librería javascript a `r R()`
+- Una librería basada en `htmlwidgets` viene `shiny` & `rmarkdown` _ready_
+
+## htmlwidgets
+
+Para la mayoría de las librerías sueltas en la web existe un paquete para `r R()`
+
+<iframe src="http://gallery.htmlwidgets.org/" height="450" width="1024" frameborder="0" scrolling="yes"></iframe>
+
+## Consideraciones
+
+`r R()` es muy flexible lo que lleva a:
+
+- Tener gran variedad de opciones `r ico("thumbs-o-up", "#337ab7")`
+- Considerar que cada paquete tiene su propia sintaxis `r ico("exclamation-triangle", "#d58512")`
+- _Peeero_ siempre estarás acompañado de la buena comunidad que R posee `r ico("smile-o", "green")`
+
+# `r ico("line-chart")` highcharts { .left .white data-background-iframe="demo_0.html" }
+
+## Highcharts 
+
+- __highcharts__ es una popular -entre otras- librería de javascript de visualización
+- Muy ~~vieja~~ madura y flexible. Muchos plugins! 
+- Muchos tipos de gráficos<span class="fragment">, incluyendo financieros y mapas</span>
+- __highcharter__ es un poco más que el _wrapper_ highcharts para `r R()`<span class="fragment">. Por lo que hereda
+todas sus características. Yay! `r ico("check", "#00FF00")`</span>
+
+

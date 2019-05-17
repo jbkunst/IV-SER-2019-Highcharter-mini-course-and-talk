@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <title>index.utf8</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="index_files/reveal.js-3.3.0.1/css/reveal.css"/>
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="index_files/reveal.js-3.3.0.1/css/theme/simple.css" id="theme">
+
+
+  <!-- some tweaks to reveal css -->
+  <style type="text/css">
+    .reveal h1 { font-size: 2.0em; }
+    .reveal h2 { font-size: 1.5em;  }
+    .reveal h3 { font-size: 1.25em;	}
+    .reveal h4 { font-size: 1em;	}
+
+    .reveal .slides>section,
+    .reveal .slides>section>section {
+      padding: 0px 0px;
+    }
+
+
+
+    .reveal table {
+      border-width: 1px;
+      border-spacing: 2px;
+      border-style: dotted;
+      border-color: gray;
+      border-collapse: collapse;
+      font-size: 0.7em;
+    }
+
+    .reveal table th {
+      border-width: 1px;
+      padding-left: 10px;
+      padding-right: 25px;
+      font-weight: bold;
+      border-style: dotted;
+      border-color: gray;
+    }
+
+    .reveal table td {
+      border-width: 1px;
+      padding-left: 10px;
+      padding-right: 25px;
+      border-style: dotted;
+      border-color: gray;
+    }
+
+
+  </style>
+
+    <style type="text/css">code{white-space: pre;}</style>
+
+    <link rel="stylesheet" href="css\styles.css"/>
+
+<!-- Printing and PDF exports -->
+<script id="paper-css" type="application/dynamic-css">
+
+/* Default Print Stylesheet Template
+   by Rob Glazebrook of CSSnewbie.com
+   Last Updated: June 4, 2008
+
+   Feel free (nay, compelled) to edit, append, and
+   manipulate this file as you see fit. */
+
+
+@media print {
+
+	/* SECTION 1: Set default width, margin, float, and
+	   background. This prevents elements from extending
+	   beyond the edge of the printed page, and prevents
+	   unnecessary background images from printing */
+	html {
+		background: #fff;
+		width: auto;
+		height: auto;
+		overflow: visible;
+	}
+	body {
+		background: #fff;
+		font-size: 20pt;
+		width: auto;
+		height: auto;
+		border: 0;
+		margin: 0 5%;
+		padding: 0;
+		overflow: visible;
+		float: none !important;
+	}
+
+	/* SECTION 2: Remove any elements not needed in print.
+	   This would include navigation, ads, sidebars, etc. */
+	.nestedarrow,
+	.controls,
+	.fork-reveal,
+	.share-reveal,
+	.state-background,
+	.reveal .progress,
+	.reveal .backgrounds {
+		display: none !important;
+	}
+
+	/* SECTION 3: Set body font face, size, and color.
+	   Consider using a serif font for readability. */
+	body, p, td, li, div {
+		font-size: 20pt!important;
+		font-family: Georgia, "Times New Roman", Times, serif !important;
+		color: #000;
+	}
+
+	/* SECTION 4: Set heading font face, sizes, and color.
+	   Differentiate your headings from your body text.
+	   Perhaps use a large sans-serif for distinction. */
+	h1,h2,h3,h4,h5,h6 {
+		color: #000!important;
+		height: auto;
+		line-height: normal;
+		font-family: Georgia, "Times New Roman", Times, serif !important;
+		text-shadow: 0 0 0 #000 !important;
+		text-align: left;
+		letter-spacing: normal;
+	}
+	/* Need to reduce the size of the fonts for printing */
+	h1 { font-size: 28pt !important;  }
+	h2 { font-size: 24pt !important; }
+	h3 { font-size: 22pt !important; }
+	h4 { font-size: 22pt !important; font-variant: small-caps; }
+	h5 { font-size: 21pt !important; }
+	h6 { font-size: 20pt !important; font-style: italic; }
+
+	/* SECTION 5: Make hyperlinks more usable.
+	   Ensure links are underlined, and consider appending
+	   the URL to the end of the link for usability. */
+	a:link,
+	a:visited {
+		color: #000 !important;
+		font-weight: bold;
+		text-decoration: underline;
+	}
+	/*
+	.reveal a:link:after,
+	.reveal a:visited:after {
+		content: " (" attr(href) ") ";
+		color: #222 !important;
+		font-size: 90%;
+	}
+	*/
+
+
+	/* SECTION 6: more reveal.js specific additions by @skypanther */
+	ul, ol, div, p {
+		visibility: visible;
+		position: static;
+		width: auto;
+		height: auto;
+		display: block;
+		overflow: visible;
+		margin: 0;
+		text-align: left !important;
+	}
+	.reveal pre,
+	.reveal table {
+		margin-left: 0;
+		margin-right: 0;
+	}
+	.reveal pre code {
+		padding: 20px;
+		border: 1px solid #ddd;
+	}
+	.reveal blockquote {
+		margin: 20px 0;
+	}
+	.reveal .slides {
+		position: static !important;
+		width: auto !important;
+		height: auto !important;
+
+		left: 0 !important;
+		top: 0 !important;
+		margin-left: 0 !important;
+		margin-top: 0 !important;
+		padding: 0 !important;
+		zoom: 1 !important;
+
+		overflow: visible !important;
+		display: block !important;
+
+		text-align: left !important;
+		-webkit-perspective: none;
+		   -moz-perspective: none;
+		    -ms-perspective: none;
+		        perspective: none;
+
+		-webkit-perspective-origin: 50% 50%;
+		   -moz-perspective-origin: 50% 50%;
+		    -ms-perspective-origin: 50% 50%;
+		        perspective-origin: 50% 50%;
+	}
+	.reveal .slides section {
+		visibility: visible !important;
+		position: static !important;
+		width: auto !important;
+		height: auto !important;
+		display: block !important;
+		overflow: visible !important;
+
+		left: 0 !important;
+		top: 0 !important;
+		margin-left: 0 !important;
+		margin-top: 0 !important;
+		padding: 60px 20px !important;
+		z-index: auto !important;
+
+		opacity: 1 !important;
+
+		page-break-after: always !important;
+
+		-webkit-transform-style: flat !important;
+		   -moz-transform-style: flat !important;
+		    -ms-transform-style: flat !important;
+		        transform-style: flat !important;
+
+		-webkit-transform: none !important;
+		   -moz-transform: none !important;
+		    -ms-transform: none !important;
+		        transform: none !important;
+
+		-webkit-transition: none !important;
+		   -moz-transition: none !important;
+		    -ms-transition: none !important;
+		        transition: none !important;
+	}
+	.reveal .slides section.stack {
+		padding: 0 !important;
+	}
+	.reveal section:last-of-type {
+		page-break-after: avoid !important;
+	}
+	.reveal section .fragment {
+		opacity: 1 !important;
+		visibility: visible !important;
+
+		-webkit-transform: none !important;
+		   -moz-transform: none !important;
+		    -ms-transform: none !important;
+		        transform: none !important;
+	}
+	.reveal section img {
+		display: block;
+		margin: 15px 0px;
+		background: rgba(255,255,255,1);
+		border: 1px solid #666;
+		box-shadow: none;
+	}
+
+	.reveal section small {
+		font-size: 0.8em;
+	}
+
+}  
+</script>
+
+
+<script id="pdf-css" type="application/dynamic-css">
+    
+/**
+ * This stylesheet is used to print reveal.js
+ * presentations to PDF.
+ *
+ * https://github.com/hakimel/reveal.js#pdf-export
+ */
+
+* {
+	-webkit-print-color-adjust: exact;
+}
+
+body {
+	margin: 0 auto !important;
+	border: 0;
+	padding: 0;
+	float: none !important;
+	overflow: visible;
+}
+
+html {
+	width: 100%;
+	height: 100%;
+	overflow: visible;
+}
+
+/* Remove any elements not needed in print. */
+.nestedarrow,
+.reveal .controls,
+.reveal .progress,
+.reveal .playback,
+.reveal.overview,
+.fork-reveal,
+.share-reveal,
+.state-background {
+	display: none !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	text-shadow: 0 0 0 #000 !important;
+}
+
+.reveal pre code {
+	overflow: hidden !important;
+	font-family: Courier, 'Courier New', monospace !important;
+}
+
+ul, ol, div, p {
+	visibility: visible;
+	position: static;
+	width: auto;
+	height: auto;
+	display: block;
+	overflow: visible;
+	margin: auto;
+}
+.reveal {
+	width: auto !important;
+	height: auto !important;
+	overflow: hidden !important;
+}
+.reveal .slides {
+	position: static;
+	width: 100%;
+	height: auto;
+
+	left: auto;
+	top: auto;
+	margin: 0 !important;
+	padding: 0 !important;
+
+	overflow: visible;
+	display: block;
+
+	-webkit-perspective: none;
+	   -moz-perspective: none;
+	    -ms-perspective: none;
+	        perspective: none;
+
+	-webkit-perspective-origin: 50% 50%; /* there isn't a none/auto value but 50-50 is the default */
+	   -moz-perspective-origin: 50% 50%;
+	    -ms-perspective-origin: 50% 50%;
+	        perspective-origin: 50% 50%;
+}
+
+.reveal .slides section {
+	page-break-after: always !important;
+
+	visibility: visible !important;
+	position: relative !important;
+	display: block !important;
+	position: relative !important;
+
+	margin: 0 !important;
+	padding: 0 !important;
+	box-sizing: border-box !important;
+	min-height: 1px;
+
+	opacity: 1 !important;
+
+	-webkit-transform-style: flat !important;
+	   -moz-transform-style: flat !important;
+	    -ms-transform-style: flat !important;
+	        transform-style: flat !important;
+
+	-webkit-transform: none !important;
+	   -moz-transform: none !important;
+	    -ms-transform: none !important;
+	        transform: none !important;
+}
+
+.reveal section.stack {
+	margin: 0 !important;
+	padding: 0 !important;
+	page-break-after: avoid !important;
+	height: auto !important;
+	min-height: auto !important;
+}
+
+.reveal img {
+	box-shadow: none;
+}
+
+.reveal .roll {
+	overflow: visible;
+	line-height: 1em;
+}
+
+/* Slide backgrounds are placed inside of their slide when exporting to PDF */
+.reveal section .slide-background {
+	display: block !important;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: -1;
+}
+
+/* All elements should be above the slide-background */
+.reveal section>* {
+	position: relative;
+	z-index: 1;
+}
+
+/* Display slide speaker notes when 'showNotes' is enabled */
+.reveal .speaker-notes-pdf {
+	display: block;
+	width: 100%;
+	max-height: none;
+	left: auto;
+	top: auto;
+	z-index: 100;
+}
+
+/* Display slide numbers when 'slideNumber' is enabled */
+.reveal .slide-number-pdf {
+	display: block;
+	position: absolute;
+	font-size: 14px;
+}
+
+</script>
+
+
+<script>
+var style = document.createElement( 'style' );
+style.type = 'text/css';
+var style_script_id = window.location.search.match( /print-pdf/gi ) ? 'pdf-css' : 'paper-css';
+var style_script = document.getElementById(style_script_id).text;
+style.innerHTML = style_script;
+document.getElementsByTagName('head')[0].appendChild(style);
+</script>
+
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section>
+    <h1 class="title"><div id="brand">
+h|1i|0g|3h|2c|1h|2a|1r|3t|2e|1r|2{userchile}
+</div></h1>
+    <h2 class="author"><div id="subbrand">
+Joshua Kunst, Julio 2017
+</div></h2>
+</section>
+
+<section id="advertencia" class="slide level2">
+<h2><span style="color:#ff0033"> <i class="fa fa-exclamation-triangle"></i> </span> Advertencia</h2>
+<script>
+(function (H) {
+    H.wrap(H.Pointer.prototype, 'normalize', function (proceed, e) {
+        var e = proceed.call(this,e);
+        var zoom = Reveal.getScale();
+        if(zoom>1) {
+        var positionX = e.pageX - e.chartX;
+        var positionY = e.pageY - e.chartY;
+        e.chartX = Math.round((e.pageX - positionX*zoom)/zoom);
+        e.chartY = Math.round((e.pageY - positionY*zoom)/zoom); 
+        } else {
+          e.chartX = Math.round(e.chartX/zoom);
+          e.chartY = Math.round(e.chartY/zoom);
+        }
+      return e;
+    });
+}(Highcharts));
+</script>
+<p><br></p>
+<p>Todos los gráficos de <span> <i class="fa fa-pie-chart"></i> </span>, <em>3D</em> y la combinación de estos en esta presentación son ilustrativos y no representan el estilo ni el gusto de quien lo presenta</p>
+</section>
+<section><section id="quien-soy-y-que-haremos" class="title-slide slide level1 center white" data-background="https://i.giphy.com/3o7GVDAkLp4cEMbzwc.gif"><h1><span style="color:#FFCC00"> <i class="fa fa-info-circle"></i> </span> Quien soy y que haré(mos)</h1></section><section id="quien-soy" class="slide level2">
+<h2>Quien soy</h2>
+<ul>
+<li class="fragment">De día hago como que trabajo en riesgo (70%)</li>
+<li class="fragment">En Proyectos Personales (30%)</li>
+<li class="fragment">Me gusta escribir código (en <span style="color:#2066B9;font-weight:500">R</span>)</li>
+<li class="fragment">Y compartirlo en <a href="http://jkunst.com">jkunst.com</a></li>
+<li class="fragment">De casualidad soy Estadístico <span class="fragment">. Así mismo use<span style="color:#2066B9;font-weight:500">R</span></span></li>
+</ul>
+</section><section id="que-haremos" class="slide level2">
+<h2>Que haremos</h2>
+<ul>
+<li class="fragment">Revisar formas de visualizar en <span style="color:#2066B9;font-weight:500">R</span></li>
+<li class="fragment">Qué es <strong>highcharts</strong>?</li>
+<li class="fragment">Cómo usar <strong>highcharter</strong>?</li>
+<li class="fragment">Función genérica <code>hchart</code></li>
+<li class="fragment">Ejemplos simples<span class="fragment">, y quizás algunos más complejos</span><span class="fragment">. Integración con <code>shiny</code><span class="fragment">, <code>rmarkdown</code></span><span class="fragment">. Si el tiempo da</span></li>
+</ul>
+</section><section id="por-que-lo-hariamos" class="slide level2">
+<h2>Por que lo haríamos?</h2>
+<ul>
+<li class="fragment">La <strong>visualización</strong> ayuda a descubrir y explicar</li>
+<li class="fragment">En muchos casos resume un <em>gran</em> desarrollo que hemos hecho</li>
+<li class="fragment">Y bueno, en general es mejor recibido si es claro y <strong>atractivo</strong></li>
+</ul>
+<p><span class="fragment"><img data-src="img/joewink.gif" /></span></p>
+</section></section>
+<section><section id="historia" class="title-slide slide level1 right white" data-background="img/oldpc.gif"><h1><span> <i class="fa fa-history"></i> </span> Historia</h1></section><section id="r-base" class="slide level2">
+<h2>R base</h2>
+<p>Haciendo visualizaciones desde 2000 AC</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1">y &lt;-<span class="st"> </span><span class="kw">rpois</span>(<span class="dv">100</span>, <span class="dt">lambda =</span> <span class="dv">3</span>)</a>
+<a class="sourceLine" id="cb1-2" title="2"><span class="kw">plot</span>(<span class="kw">table</span>(y))</a></code></pre></div>
+<p><img src="index_files/figure-revealjs/unnamed-chunk-2-1.png" width="480" /></p>
+</section><section id="r-base-1" class="slide level2">
+<h2>R base</h2>
+<p>Rápido para hacer cosas simples, pero no escala de la mejor manera.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1"><span class="kw">plot</span>(AirPassengers)</a></code></pre></div>
+<p><img src="index_files/figure-revealjs/unnamed-chunk-3-1.png" width="480" /></p>
+</section><section id="ggplot2-lattice" class="slide level2">
+<h2>ggplot2 &amp; Lattice</h2>
+<ul>
+<li class="fragment"><code>lattice</code> basado en <em>trellis</em></li>
+<li class="fragment"><code>ggplot2</code> basado en <em>gramar of graphics</em></li>
+<li class="fragment">Paquetes con buen soporte en datos multivariados (colores, facets, …)</li>
+<li class="fragment"><code>ggplot2</code> es el rey de los gráficos estáticos</li>
+<li class="fragment">Muy flexible dado que existe la posibilidad de crear extensiones + temas</li>
+</ul>
+</section><section id="htmlwidgets" class="slide level2">
+<h2>htmlwidgets</h2>
+<ul>
+<li class="fragment">Surgió como la 2da iteración de <code>rCharts</code> para graficar usando librerías de javascript (basadas en web).</li>
+<li class="fragment">Permite a usuarios <del>ab</del>usar de estás librerías sin necesariamente conocer js</li>
+<li class="fragment">Provee un <em>framework</em> -una estandarización- para que un desarrollador porte una librería javascript a <span style="color:#2066B9;font-weight:500">R</span></li>
+<li class="fragment">Una librería basada en <code>htmlwidgets</code> viene <code>shiny</code> &amp; <code>rmarkdown</code> <em>ready</em></li>
+</ul>
+</section><section id="htmlwidgets-1" class="slide level2">
+<h2>htmlwidgets</h2>
+<p>Para la mayoría de las librerías sueltas en la web existe un paquete para <span style="color:#2066B9;font-weight:500">R</span></p>
+<iframe src="http://gallery.htmlwidgets.org/" height="450" width="1024" frameborder="0" scrolling="yes">
+</iframe>
+</section><section id="consideraciones" class="slide level2">
+<h2>Consideraciones</h2>
+<p><span style="color:#2066B9;font-weight:500">R</span> es muy flexible lo que lleva a:</p>
+<ul>
+<li class="fragment">Tener gran variedad de opciones <span style="color:#337ab7"> <i class="fa fa-thumbs-o-up"></i> </span></li>
+<li class="fragment">Considerar que cada paquete tiene su propia sintaxis <span style="color:#d58512"> <i class="fa fa-exclamation-triangle"></i> </span></li>
+<li class="fragment"><em>Peeero</em> siempre estarás acompañado de la buena comunidad que R posee <span style="color:green"> <i class="fa fa-smile-o"></i> </span></li>
+</ul>
+</section></section>
+<section><section id="highcharts" class="title-slide slide level1 left white" data-background-iframe="demo_0.html"><h1><span> <i class="fa fa-line-chart"></i> </span> highcharts</h1></section><section id="highcharts-1" class="slide level2">
+<h2>Highcharts</h2>
+<ul>
+<li class="fragment"><strong>highcharts</strong> es una popular -entre otras- librería de javascript de visualización</li>
+<li class="fragment">Muy <del>vieja</del> madura y flexible. Muchos plugins!</li>
+<li class="fragment">Muchos tipos de gráficos<span class="fragment">, incluyendo financieros y mapas</span></li>
+<li class="fragment"><strong>highcharter</strong> es un poco más que el <em>wrapper</em> highcharts para <span style="color:#2066B9;font-weight:500">R</span><span class="fragment">. Por lo que hereda todas sus características. Yay! <span style="color:#00FF00"> <i class="fa fa-check"></i> </span></span></li>
+</ul>
+</section></section>
+    </div>
+  </div>
+
+  <script src="index_files/reveal.js-3.3.0.1/lib/js/head.min.js"></script>
+  <script src="index_files/reveal.js-3.3.0.1/js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        // Display controls in the bottom right corner
+        controls: false,
+        // Display the page number of the current slide
+        slideNumber: true,
+        // Push each slide change to the browser history
+        history: true,
+        // Vertical centering of slides
+        center: false,
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+        // Transition style
+        transition: 'fade', // none/fade/slide/convex/concave/zoom
+        // Transition style for full page slide backgrounds
+        backgroundTransition: 'default', // none/fade/slide/convex/concave/zoom
+
+
+
+        // Optional reveal.js plugins
+        dependencies: [
+        ]
+      });
+    </script>
+
+<script>
+  (function() {
+    if (window.jQuery) {
+      Reveal.addEventListener( 'slidechanged', function(event) {  
+        window.jQuery(event.previousSlide).trigger('hidden');
+        window.jQuery(event.currentSlide).trigger('shown');
+      });
+    }
+  })();
+</script>
+
+
+  </body>
+</html>
