@@ -4,9 +4,10 @@ author: "<div id=\"subbrand\">Joshua Kunst, Julio 2017</div>"
 output:
   revealjs::revealjs_presentation:
     self_contained: false
+    lib_dir: libs
+    css: ["libs/css/styles.css"]
     mathjax: null
     transition: fade
-    css: ["css/styles.css"]
     incremental: true
     center: false
     theme: simple
