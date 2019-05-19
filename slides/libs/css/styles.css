@@ -8,6 +8,13 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: 'imposso';
+  src: url('../fonts/IMPOS0__.ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+
 /* for Datalegreya */
 body {
   background-color: #FAFAFA;
@@ -51,11 +58,12 @@ body {
 }
 
 /* some colors for title slides */
-.reveal .white > h1{ color: white;}
-.reveal .black > h1 { color: black;}
+.reveal .white > h1, .reveal .white > h2 { color: white;}
+.reveal .black > h1, .reveal .black > h2 { color: black;}
 
-.reveal .left  > h1 { text-align: left; }
-.reveal .right > h1 { text-align: right; }
+.reveal .left  > h1, .reveal .left  > h2 { text-align: left; }
+.reveal .right > h1, .reveal .right > h2 { text-align: right; }
+
 
 
 /* Styles for text p li */
@@ -86,3 +94,51 @@ body {
 /* img */
 .reveal section img { border: none; }
 
+.reveal .impo {
+  font-family: "imposso"; 
+}
+
+
+.greeting {
+	animation-name: thunder;
+	animation-duration: 1s;
+	animation-fill-mode: both;
+	animation-iteration-count: infinite;
+	-webkit-animation-name: thunder;
+	-webkit-animation-duration: 7s;
+	-webkit-animation-fill-mode: both;
+	-webkit-animation-iteration-count: infinite;
+	 transition: all 150ms ease 0s;
+}
+@keyframes thunder{
+	0%, 20%, 40%, 60%, 80%, 100% {
+		transform: rotate3d(0, 0, 1, -5deg);
+	}
+	10%, 30%, 50%, 70%, 90% {
+		transform: rotate3d(0, 0, 1, 5deg);
+	}
+}
+@-webkit-keyframes thunder{
+	0%, 20%, 40%, 60%, 80%, 100% {
+		transform: rotate3d(0, 0, 1, -5deg);
+	}
+	10%, 30%, 50%, 70%, 90% {
+		transform: rotate3d(0, 0, 1, 5deg);
+	}
+}
+
+@-webkit-keyframes pulse_animation {
+  0% { -webkit-transform: scale(1); }
+  16% { -webkit-transform: scale(1); }
+  33% { -webkit-transform: scale(1.2); }
+  50% { -webkit-transform: scale(1); }
+  66% { -webkit-transform: scale(1); }
+  83% { -webkit-transform: scale(1.2); }
+}
+.pulse {
+  -webkit-animation-name: 'pulse_animation';
+  -webkit-animation-duration: 2000ms;
+  -webkit-transform-origin: 50% 60%;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+}

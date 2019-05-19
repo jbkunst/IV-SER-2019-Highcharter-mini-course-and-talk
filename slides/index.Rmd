@@ -1,6 +1,4 @@
 ---
-title: "<div id=\"brand\">h|1i|0g|3h|2c|1h|2a|1r|3t|2e|1r|2{userchile}</div>"
-author: "<div id=\"subbrand\">Joshua Kunst, Julio 2017</div>"
 output:
   revealjs::revealjs_presentation:
     self_contained: false
@@ -21,11 +19,14 @@ editor_options:
   chunk_output_type: console
 ---
 
+# <span class="impo"><span style="color:#BD0607;font-size:0.8em">Mission:Impossible</span><br><span style="color:#E9E2DF">Presenting highcharter and its best features in 30 minutes or less</span></span>  {.center data-background="#020102"}
+
+<!-- title: "<div id=\"brand\">h|1i|0g|3h|2c|1h|2a|1r|3t|2e|1r|2{userchile}</div>" -->
+<!-- author: "<div id=\"subbrand\">Joshua Kunst, Julio 2017</div>" -->
+
 ```{r, include = FALSE}
 source(here::here("slides/R/setup.R"))
 ```
-
-## `r ico("exclamation-triangle", "#ff0033")` Advertencia 
 
 <script>
 (function (H) {
@@ -46,98 +47,84 @@ source(here::here("slides/R/setup.R"))
 }(Highcharts));
 </script>
 
+## `r ico("hand-paper-o", "#ff0033", class="greeting")`, Ola. Eu sou joshua 
 
-<br>
-
-Todos los gráficos de `r ico("pie-chart")`, _3D_ y la combinación de estos 
-en esta presentación son ilustrativos y no representan el 
-estilo ni el gusto de quien lo presenta
+- Analista em um banco 
+- `highcharter` creator
+- `r ico("heart", "read", class="pulse")` `r R()`
 
 
-# `r ico("info-circle", "#FFCC00")` Quien soy y que haré(mos) { .center .white data-background="https://i.giphy.com/3o7GVDAkLp4cEMbzwc.gif" }
+## Expectativas desta apresentação<br>Expectations of this presentation { data-background="img/expectations.jpg" .center .white }
 
-## Quien soy
+## Realidade/Reality { data-background="img/reality.jpg" .center .white }
 
-- De día hago como que trabajo en riesgo (70%)
-- En Proyectos Personales (30%)
-- Me gusta escribir código (en `r R()`)
-- Y compartirlo en [jkunst.com](http://jkunst.com)
-- De casualidad soy Estadístico <span class="fragment">. Así mismo use`r R()`</span>
 
-## Que haremos
+# `hchart` { .white data-background="img/magic.jpg" .right }
 
-- Revisar formas de visualizar en `r R()`
-- Qué es __highcharts__?
-- Cómo usar __highcharter__?
-- Función genérica `hchart`
-- Ejemplos simples<span class="fragment">, y quizás algunos más complejos</span><span class="fragment">. Integración con `shiny`<span class="fragment">, `rmarkdown`</span><span class="fragment">. Si el tiempo da</span>
+## `hchart`
 
-## Por que lo haríamos?
+- `hchart` é uma função genérica (semelhante a `plot`)
+- Dependendo da classe do objeto irá gerar um grafo
 
-- La __visualización__ ayuda a descubrir y explicar
-- En muchos casos resume un _gran_ desarrollo que hemos hecho
-- Y bueno, en general es mejor recibido si es claro y __atractivo__
 
-<span class="fragment">![](img/joewink.gif)</span>
-
-# `r ico("history")` Historia { .right .white data-background="img/oldpc.gif"}
-
-## R base
-
-Haciendo visualizaciones desde 2000 AC
+## Datos
 
 ```{r}
-y <- rpois(100, lambda = 3)
-plot(table(y))
+data("diamonds", package = "ggplot2")
+glimpse(diamonds)
 ```
 
-## R base
+----
 
-Rápido para hacer cosas simples, pero no escala de la mejor manera.
+Variáveis numéricas
 
 ```{r}
-plot(AirPassengers)
+hchart(diamonds$price, name = "preco")
 ```
 
-## ggplot2 & Lattice
+----
 
-- `lattice` basado en _trellis_
-- `ggplot2` basado en _gramar of graphics_
-- Paquetes con buen soporte en datos multivariados (colores, facets, ...)
-- `ggplot2` es el rey de los gráficos estáticos
-- Muy flexible dado que existe la posibilidad de crear extensiones + temas
+Fatores
 
-## htmlwidgets
+```{r}
+hchart(diamonds$cut, name = "corte")
+```
 
-- Surgió como la 2da iteración de `rCharts` para graficar usando 
-librerías de javascript (basadas en web).
-- Permite a usuarios ~~ab~~usar de estás librerías sin necesariamente conocer js
-- Provee un _framework_ -una estandarización- para que un desarrollador
-porte una librería javascript a `r R()`
-- Una librería basada en `htmlwidgets` viene `shiny` & `rmarkdown` _ready_
+----
 
-## htmlwidgets
+Séries temporais
 
-Para la mayoría de las librerías sueltas en la web existe un paquete para `r R()`
+```{r}
+data("AirPassengers")
+hchart(AirPassengers, name = "Passengers")
+```
 
-<iframe src="http://gallery.htmlwidgets.org/" height="450" width="1024" frameborder="0" scrolling="yes"></iframe>
+----
 
-## Consideraciones
+```{r}
+library(forecast)
+fit <- forecast(AirPassengers)
+hchart(fit, name = "Passengers")
+```
 
-`r R()` es muy flexible lo que lleva a:
+----
 
-- Tener gran variedad de opciones `r ico("thumbs-o-up", "#337ab7")`
-- Considerar que cada paquete tiene su propia sintaxis `r ico("exclamation-triangle", "#d58512")`
-- _Peeero_ siempre estarás acompañado de la buena comunidad que R posee `r ico("smile-o", "green")`
+```{r}
+data("volcano")
+hchart(volcano)
+```
 
-# `r ico("line-chart")` highcharts { .left .white data-background-iframe="demo_0.html" }
+----
 
-## Highcharts 
+E muito mais:
 
-- __highcharts__ es una popular -entre otras- librería de javascript de visualización
-- Muy ~~vieja~~ madura y flexible. Muchos plugins! 
-- Muchos tipos de gráficos<span class="fragment">, incluyendo financieros y mapas</span>
-- __highcharter__ es un poco más que el _wrapper_ highcharts para `r R()`<span class="fragment">. Por lo que hereda
-todas sus características. Yay! `r ico("check", "#00FF00")`</span>
+- densidades
+- Pacotes `igraph`, `survival`, `quantmod` 
+- Componentes principais
+- ... 
 
+http://jkunst.com/highcharter/hchart.html
 
+# Credits
+
+- fergregory/iStock/Getty Images Plus
