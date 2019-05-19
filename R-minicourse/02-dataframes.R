@@ -3,6 +3,10 @@ library(highcharter)
 library(ggplot2)
 library(dplyr)
 
+# Documentação ------------------------------------------------------------
+# 
+# https://cran.r-project.org/web/packages/highcharter/vignettes/charting-data-frames.html
+# 
 
 # Contexto ----------------------------------------------------------------
 # 
@@ -10,15 +14,10 @@ library(dplyr)
 # 
 # ggplot uses geom and aesthetics
 # 
-data(diamonds, package = "ggplot2")
+data(economics_long, package = "ggplot2")
 
-set.seed(123)
-diamonds2 <- sample_n(diamonds, 1000)
-
-glimpse(diamonds2)
-
-ggplot(diamonds2) +
-  geom_point(aes(x = carat, y = price, color = cut))
+ggplot(economics_long) +
+  geom_line(aes(x = date, y = value01, color = variable))
 
 # GEOM / capa
 
@@ -31,10 +30,73 @@ ggplot(diamonds2) +
 # 
 # Version I
 # 
-hchart(diamonds2, "point", hcaes(x = carat, y = price, group = cut))
+# 
+# Version I
+# 
+hchart(economics_long, "line", hcaes(x = date, y = value01, group = variable))
 
 # 
 # Version II
 # 
 highchart() %>% 
-  hc_add_series(diamonds2, "point", hcaes(x = carat, y = price, group = cut))
+  hc_add_series(economics_long, "line", hcaes(x = date, y = value01, group = variable)) %>% 
+  hc_xAxis(type = "datetime")
+
+# Adicionar mais de um conjunto de dados ----------------------------------
+# 
+glimpse(mtcars)
+
+dados_cyl_2 <- filter(mtcars, cyl == 6)
+dados_cyl_4 <- filter(mtcars, cyl == 4)
+
+highchart() %>% 
+  hc_add_series(dados_cyl_2, "scatter", hcaes(mpg, disp), color = "red", name = "cyl2")
+
+
+highchart() %>% 
+  hc_add_series(dados_cyl_2, "scatter", hcaes(mpg, disp), color = "red", name = "cyl2") %>% 
+  hc_add_series(dados_cyl_4, "scatter", hcaes(mpg, disp), color = "blue", name = "cyl4")
+
+# 
+# Mas melhor
+# 
+highchart() %>% 
+  hc_add_series(mtcars, "scatter", hcaes(mpg, disp, group = cyl)) 
+
+# 
+# ou usando hchart :)
+# 
+hchart(mtcars, type = "scatter", mapping = hcaes(mpg, disp, group = cyl)) 
+
+
+# exemplo mais divertido --------------------------------------------------
+# 
+library(broom)
+
+modlss <- loess(disp ~ mpg, data = mtcars)
+fit <- arrange(augment(modlss), mpg)
+
+glimpse(fit)
+
+fit <- fit %>% 
+  mutate(
+    low_fit = .fitted - 1.96*.se.fit,
+    high_fit = .fitted + 1.96*.se.fit
+  )
+
+fit
+
+highchart() %>% 
+  hc_add_series(mtcars, "scatter", hcaes(mpg, disp, group = cyl)) %>% 
+  hc_add_series(fit, "spline", hcaes(x = mpg, y = .fitted), name = "Fit") %>% 
+  hc_add_series(fit, "arearange", hcaes(x = mpg, low = low_fit, high = high_fit),
+                color = hex_to_rgba("gray", 0.01), name = "confidence")
+
+# Exercícios --------------------------------------------------------------
+# 
+# 1. 
+# 
+
+# 
+# 2. 
+# 

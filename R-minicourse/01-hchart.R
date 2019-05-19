@@ -2,6 +2,12 @@
 library(highcharter)
 
 
+
+# Documentação ------------------------------------------------------------
+# 
+# http://jkunst.com/highcharter/hchart.html
+
+
 # Contexto ----------------------------------------------------------------
 # 
 # plot is a generic (magical) funcion.

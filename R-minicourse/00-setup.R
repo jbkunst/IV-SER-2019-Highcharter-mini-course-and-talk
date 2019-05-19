@@ -1,2 +1,2 @@
 # Instalação de pacotes
-install.packages(c("tidyverse", "forecast", "highcharter"))
+install.packages(c("tidyverse", "forecast", "highcharter", "broom"))
