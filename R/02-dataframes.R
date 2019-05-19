@@ -5,15 +5,13 @@ library(dplyr)
 
 
 # ggplot2 -----------------------------------------------------------------
-data(diamonds, package = "ggplot2")
+#  
+# Contexto:
+# 
+data(economics_long, package = "ggplot2")
 
-set.seed(123)
-diamonds2 <- sample_n(diamonds, 1000)
-
-glimpse(diamonds2)
-
-ggplot(diamonds2) +
-  geom_point(aes(x = carat, y = price, color = cut))
+ggplot(economics_long) +
+  geom_line(aes(x = date, y = value01, color = variable))
 
 # GEOM / capa
 
@@ -23,10 +21,14 @@ ggplot(diamonds2) +
 
 
 # highcharter -------------------------------------------------------------
-
+# 
 # Version I
-hchart(diamonds2, "point", hcaes(x = carat, y = price, group = cut))
+# 
+hchart(economics_long, "line", hcaes(x = date, y = value01, group = variable))
 
+# 
 # Version II
+# 
 highchart() %>% 
-  hc_add_series(diamonds2, "point", hcaes(x = carat, y = price, group = cut))
+  hc_add_series(economics_long, "line", hcaes(x = date, y = value01, group = variable)) %>% 
+  hc_xAxis(type = "datetime")
