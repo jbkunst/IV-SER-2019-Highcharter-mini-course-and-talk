@@ -1,26 +1,22 @@
 # Pacotes -----------------------------------------------------------------
 library(highcharter)
 library(tidyverse)
-  
-# Modify a highcharter chart
-# 
-# 
-
+ 
 # Documentação ------------------------------------------------------------
 # 
 # https://api.highcharts.com/highcharts/
 # 
 # https://dantonnoriega.github.io/ultinomics.org/post/2017-04-05-highcharter-explainer.html
 # 
-# 
 
-# One chart ---------------------------------------------------------------
-# 
+# Dados -------------------------------------------------------------------
 data(citytemp)
 
 citytemp_long <- citytemp %>% 
   gather(city, temp, -month) %>% 
   mutate(month = factor(month, month.abb))
+
+citytemp_long
 
 hc <- hchart(citytemp_long, "line", hcaes(month, temp, group = city))
 
@@ -50,4 +46,50 @@ hc
 
 hc %>% 
   hc_title(text = "Nuevo titulo")
+
+
+
+# Axis --------------------------------------------------------------------
+hc %>% 
+  hc_xAxis(
+    title = list(text = "Month in x Axis"),
+    opposite = TRUE,
+    plotLines = list(
+      list(
+        label = list(text = "This is a plotLine"),
+        color = "#FF0000",
+        width = 2,
+        value = 5.5
+        )
+      )
+    ) %>% 
+  hc_yAxis(
+    title = list(text = "Temperature in y Axis"),
+    opposite = TRUE,
+    minorTickInterval = "auto",
+    minorGridLineDashStyle = "LongDashDotDot",
+    plotBands = list(
+      list(
+        from = 25, to = 80, 
+        color = "rgba(100, 0, 0, 0.1)",
+        label = list(text = "This is a plotBand")
+        )
+      )
+    )
+
+
+# legend & exporting ------------------------------------------------------
+hc %>% 
+  hc_legend(
+    align = "left", 
+    verticalAlign = "top",
+    layout = "vertical"
+    ) %>%
+  hc_exporting(enabled = TRUE) # enable exporting option
+
+
+# IMPORTANTE: MUUUCHAS OPCIONES -------------------------------------------
+
+# https://api.highcharts.com/highcharts/
+
 

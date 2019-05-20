@@ -127,3 +127,8 @@ dforecast <- fortify(fit, ts.connect = TRUE) %>%
 
 data
 dforecast
+
+# 
+# (cont.) realice un grafico donde muestra los datos orginiales
+# y los datos predichos
+# 
