@@ -19,7 +19,12 @@ library(highcharter)
 # 
 
 # Densidades
-d <- density(rnorm(1000))
+x <- rnorm(1000)
+
+x
+
+d <- density(x)
+
 plot(d)
 
 # Time series
@@ -28,8 +33,8 @@ plot(AirPassengers)
 
 # Forecast
 library(forecast)
-fit2 <- forecast(AirPassengers)
-plot(fit2)
+fit <- forecast(AirPassengers)
+plot(fit)
 
 # 
 # UMA (1!!) função
@@ -40,17 +45,14 @@ plot(fit2)
 # hchart is a generic function too! :)
 # 
 # Densidades
-d <- density(rnorm(1000))
 hchart(d)
 
-# Survival models
-hchart(fit)
 
 # time series
 hchart(AirPassengers)
 
 # forecast
-hchart(fit2)
+hchart(fit)
 
 # Numerics
 x <- rgamma(3000, 2, 4)
