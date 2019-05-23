@@ -6,7 +6,7 @@ library(highcharter)
 # Documentação ------------------------------------------------------------
 # 
 # http://jkunst.com/highcharter/hchart.html
-
+# 
 
 # Contexto ----------------------------------------------------------------
 # 

@@ -7,7 +7,6 @@ library(tidyverse)
 # http://jkunst.com/highcharter/themes.html
 # 
 
-
 # Exemplo motivacional ----------------------------------------------------
 # 
 # - http://jkunst.com/blog/posts/2019-04-08-when-charts-are-integrated-in-the-web-page/
@@ -33,15 +32,19 @@ hc
 # 1. Crear o escoge un tema, exemplo: hc_theme_ggplot2() 
 # 
 # 2. Agregar con la funcion hc_add_theme()
-
+# 
 hc %>% 
   hc_add_theme(hc_theme_ggplot2())
 
 hc %>% 
   hc_add_theme(hc_theme_flatdark())
 
-# Muchos temas!
+# Muitos temas:
 help.search("hc_theme_", package = "highcharter") 
+
+# 
+# - http://jkunst.com/highcharts-themes-collection/
+# 
 
 # customization -----------------------------------------------------------
 swdata <- structure(
@@ -64,11 +67,21 @@ swdata <- structure(
   )
 
 
+swdata
+
 swdata <- gather(swdata, key, number, -movie, -release) %>% 
   arrange(release)
 
 hchart(swdata, "line", hcaes(x = movie, y = number, group = key)) %>% 
-  hc_colors(c("#e5b13a", "#4bd5ee", "#4AA942", "#FAFAFA")) %>% 
+  hc_chart(
+    style = list(
+      fontSize = "2em",  
+        fontSize = "2em"
+      )
+    ) %>% 
+  hc_colors(
+    c("#e5b13a", "#4bd5ee", "#4AA942", "#FAFAFA")
+    ) %>% 
   hc_title(
     text = "Diversity in <span style=\"color:#e5b13a\"> STAR WARS</span> movies",
     useHTML = TRUE) %>% 
@@ -109,7 +122,8 @@ thm <- hc_theme(
   legend = list(
     itemStyle = list(
       fontFamily = 'Tangerine',
-      color = 'black'
+      color = 'black',
+      fontSize = "40px"
     ),
     itemHoverStyle = list(
       color = 'gray'

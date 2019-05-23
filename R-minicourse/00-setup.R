@@ -1,2 +1,13 @@
 # Instalação de pacotes
-install.packages(c("tidyverse", "forecast", "highcharter", "broom", "timetk", "ggfortify", "gapminder"))
+pacotes <- c(
+  "tidyverse",
+  "readxl",
+  "gapminder",
+  "forecast",
+  "broom",
+  "timetk",
+  "ggfortify",
+  "highcharter"
+  )
+
+install.packages(pacotes)

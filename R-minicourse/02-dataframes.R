@@ -2,6 +2,7 @@
 library(highcharter)
 library(ggplot2)
 library(dplyr)
+library(readxl)
 
 
 # Documentação ------------------------------------------------------------
@@ -31,9 +32,6 @@ ggplot(economics_long) +
 # 
 # Version I
 # 
-# 
-# Version I
-# 
 hchart(economics_long, "line", hcaes(x = date, y = value01, group = variable))
 
 # 
@@ -50,14 +48,16 @@ highchart() %>%
 # 
 glimpse(mtcars)
 
-dados_cyl_2 <- filter(mtcars, cyl == 6)
-dados_cyl_4 <- filter(mtcars, cyl == 4) 
+mtcars <- arrange(mtcars, mpg, disp)
+
+dados_cyl_4 <- filter(mtcars, cyl == 4)
+dados_cyl_6 <- filter(mtcars, cyl == 6)
+  
+highchart() %>% 
+  hc_add_series(dados_cyl_4, "scatter", hcaes(mpg, disp), color = "red", name = "cyl2")
 
 highchart() %>% 
-  hc_add_series(dados_cyl_2, "scatter", hcaes(mpg, disp), color = "red", name = "cyl2")
-
-highchart() %>% 
-  hc_add_series(dados_cyl_2, "scatter", hcaes(mpg, disp), color = "red", name = "cyl2") %>% 
+  hc_add_series(dados_cyl_6, "scatter", hcaes(mpg, disp), color = "red", name = "cyl2") %>% 
   hc_add_series(dados_cyl_4, "line", hcaes(mpg, disp), color = "blue", name = "cyl4")
 
 # 
@@ -79,7 +79,7 @@ library(broom)
 modlss <- loess(disp ~ mpg, data = mtcars)
 fit <- arrange(augment(modlss), mpg)
 
-glimpse(fit)
+fit
 
 fit <- fit %>% 
   mutate(
@@ -103,6 +103,20 @@ highchart() %>%
   hc_add_series(fit, "arearange", hcaes(x = mpg, low = low_fit, high = high_fit),
                 color = hex_to_rgba("gray", 0.01), name = "confidence")
 
+
+# Outro exemplo mais ------------------------------------------------------
+estados <- read_xlsx("data/BasesEstadosSerie.xlsx")
+glimpse(estados)
+
+hchart(estados, "line", hcaes(ANO, PIB_Estadual)) 
+
+# ?!?!?!?!?!?!?! 
+# Por que acontece isso?!?!?
+hchart(estados, "line", hcaes(ANO, Populacao, group = Estado)) 
+
+
+
+
 # Exercícios --------------------------------------------------------------
 # 
 # 1. Con los siguientes datos:
@@ -123,12 +137,20 @@ dforecast <- fortify(fit, ts.connect = TRUE) %>%
   as_tibble() %>% 
   filter(!is.na(pointforecast))
 
-
-
 data
+
 dforecast
 
 # 
-# (cont.) realice un grafico donde muestra los datos orginiales
-# y los datos predichos
+# Representar graficamente os dados originais e previstos
 # 
+dforecast <- dforecast %>% 
+  # mutate(index = format(index, "%Y-%m")) %>% 
+  mutate(index = zoo::as.yearmon(index))
+
+hchart(data, "line", hcaes(x = index, y = value), 
+       showInLegend = TRUE, name = "dados origanales") %>% 
+  hc_add_series(dforecast, "line", hcaes(x = index, y = pointforecast), 
+                showInLegend = TRUE, name = "predichos") %>% 
+  hc_add_series(dforecast, "arearange", hcaes(x = index, low = lo80, high = hi80), 
+                showInLegend = TRUE, name = "miuto legal")

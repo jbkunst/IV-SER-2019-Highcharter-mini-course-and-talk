@@ -24,14 +24,10 @@ hc
 
 
 # titulo, subtitulo, créditos ---------------------------------------------
-
 hc_title(hc, text = "Hello!")
 
 hc_subtitle(hc, text = "Bye bye")
 
-# 
-# 
-# 
 hc %>% 
   hc_title(text = "Hello!") %>% 
   hc_subtitle(text = "Bye bye") %>% 
@@ -46,7 +42,6 @@ hc
 
 hc %>% 
   hc_title(text = "Nuevo titulo")
-
 
 
 # Axis --------------------------------------------------------------------
@@ -85,11 +80,52 @@ hc %>%
     verticalAlign = "top",
     layout = "vertical"
     ) %>%
-  hc_exporting(enabled = TRUE) # enable exporting option
+  hc_exporting(enabled = TRUE) # "exporting option" :) muito bom recurso
 
 
-# IMPORTANTE: MUUUCHAS OPCIONES -------------------------------------------
+# annotations -------------------------------------------------------------
+df <- ggplot2movies::movies %>% 
+  mutate(year = round(year/10)*10) %>% 
+  count(year)
 
+df
+
+hchart(df, "area", hcaes(year, n)) %>% 
+  hc_annotations(
+    list(
+      labels = list(
+        list(point = list(x = 1940, y = 5157, xAxis = 0, yAxis = 0), text = "Arbois"),
+        list(point = list(x = 1960, y = 5605, xAxis = 0, yAxis = 0), text = "Other Arbois?")
+      )
+    )
+  )
+
+
+
+# Exemplo -----------------------------------------------------------------
+estados <- read_xlsx("data/BasesEstadosSerie.xlsx")
+glimpse(estados)
+
+
+hchart(estados, "line", hcaes(ANO, PIB_Estadual, group = Estado)) 
+
+# - Eu não gosto dos pontos
+# - Muita concentração, mude a escala
+hchart(estados, "line", hcaes(ANO, Populacao, group = Estado)) %>% 
+  hc_plotOptions(
+    series = list(marker = list(enabled = FALSE))
+    ) %>%  
+  hc_yAxis(
+    type = "logarithmic"
+    ) %>% 
+  hc_legend(
+    align = "left", 
+    verticalAlign = "top",
+    layout = "vertical"
+  )
+
+
+# Importante: muuuuuuitas opções ------------------------------------------
+# 
 # https://api.highcharts.com/highcharts/
-
-
+# 
